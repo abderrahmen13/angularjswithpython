@@ -24,7 +24,7 @@ try:
         user=os.getenv("MYSQL_USER"), 
         password=os.getenv("MYSQL_PASSWORD"), 
         host=os.getenv("MYSQL_HOST"),
-	    database=os.getenv("MYSQL_DATABASE"),
+	    database=os.getenv("MYSQL_DB"),
 	    port="3306"
         )
     print("DB connected")
@@ -38,7 +38,7 @@ def users1():
 	cursor = connection.cursor()
 	cursor.execute('SELECT * FROM tbl_user ')
 	users= cursor.fetchall()
-	connection.close()
+	# connection.close()
 	print(users)
    
 
@@ -70,7 +70,7 @@ def add_user():
 		print(e)
 	finally:
 		cursor.close() 
-		connection.close()
+		# connection.close()
 		
 @app.route('/users')
 def users():
@@ -88,7 +88,7 @@ def users():
 		print(e)
 	finally:
 		cursor.close() 
-		connection.close()
+		# connection.close()
 		
 @app.route('/user/<int:id>')
 def user(id):
@@ -105,7 +105,7 @@ def user(id):
 		print(e)
 	finally:
 		cursor.close() 
-		connection.close()
+		# connection.close()
 
 @app.route('/update', methods=['PUT'])
 def update_user():
@@ -137,7 +137,7 @@ def update_user():
 		print(e)
 	finally:
 		cursor.close() 
-		connection.close()
+		# connection.close()
 		
 @app.route('/delete/<int:id>', methods=['DELETE'])
 def delete_user(id):
@@ -154,7 +154,7 @@ def delete_user(id):
 		print(e)
 	finally:
 		cursor.close() 
-		connection.close()
+		# connection.close()
 		
 @app.errorhandler(404)
 def not_found(error=None):
